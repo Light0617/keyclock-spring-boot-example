@@ -50,7 +50,9 @@ public class KeycloakSecurityConfigurer extends KeycloakWebSecurityConfigurerAda
     protected void configure(final HttpSecurity http) throws Exception {
 
         super.configure(http);
-
-        http.authorizeRequests();
+        http.authorizeRequests()
+                .antMatchers("/admin/*").hasRole("ADMIN")
+                .antMatchers("/user/*").hasRole("USER")
+                .anyRequest().permitAll();
     }
 }

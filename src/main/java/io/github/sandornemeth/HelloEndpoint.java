@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloEndpoint {
 
     @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_USER")
     @GetMapping("/admin/hello")
     public String sayHelloToAdmin(final Principal principal) {
         return "Hello Admin: " + principal.getName();
     }
 
-    @Secured("ROLE_USER")
+//    @Secured("ROLE_USER")
+//    @Secured("ROLE_ADMIN")
     @GetMapping("/user/hello")
     public String sayHelloToUser(final Principal principal) {
         return "Hello User: " + principal.getName();
